@@ -1,7 +1,6 @@
 import Key from "./Key";
 
 const Keyboard = (props) => {
-  // let keys = props.numbers.concat(props.operations);
   let keys = props.keys;
 
   keys = keys.map((key) => (
@@ -10,7 +9,6 @@ const Keyboard = (props) => {
       id={key.id}
       name={key.name}
       type={key.type}
-      // handleClick={props.handleClick}
       handleReset={props.handleReset}
       handleDelete={props.handleDelete}
       handleEqual={props.handleEqual}

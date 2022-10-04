@@ -4,8 +4,6 @@ import ResultPanel from "./ResultPanel";
 import Keyboard from "./Keyboard";
 
 function App() {
-  // const [result, setResult] = useState(0);
-  // const [calc, setCalc] = useState("");
   const [calc, setCalc] = useState({
     sign: "",
     number: 0,
@@ -41,12 +39,14 @@ function App() {
     });
   };
   const handleDelete = () => {
-    console.log("Delete");
+    if (calc.number) {
+      const number = calc.number.toString().slice(0, -1);
+      setCalc({ ...calc, number: Number(number) });
+    }
   };
 
   const handleEqual = () => {
-    const number = Number(calc.number.replace(",", "."));
-    const result = Number(calc.result);
+    const { number, result } = calc;
     if (calc.number && calc.sign) {
       switch (calc.sign) {
         case "+":
@@ -85,20 +85,25 @@ function App() {
 
   const handleOperation = (e) => {
     const value = e.target.innerText;
-    setCalc({
-      sign: value,
-      result: !calc.result && calc.number ? calc.number : calc.result,
-      number: 0,
-    });
+
+    if (typeof calc.number === "number") {
+      setCalc({
+        sign: value,
+        result: !calc.result && calc.number ? calc.number : calc.result,
+        number: 0,
+      });
+    } else return;
   };
 
-  const handleDot = () => {
-    if (calc.number.indexOf(",") !== -1) {
-      return;
-    } else if (!calc.number) {
-      setCalc({ ...calc, number: "0," });
+  const handleDot = (e) => {
+    const dot = e.target.innerHTML;
+
+    if (!calc.number) {
+      setCalc({ ...calc, number: 0 + dot });
+    } else if (!calc.number.toString().includes(".")) {
+      setCalc({ ...calc, number: calc.number + dot });
     } else {
-      setCalc({ ...calc, number: calc.number + "," });
+      return;
     }
   };
 
@@ -106,69 +111,33 @@ function App() {
     const activeNumber = e.target.innerText;
     if (calc.number === 0) {
       if (activeNumber === "0") {
-        setCalc({ ...calc, number: 0, result: !calc.sign ? 0 : calc.result });
+        setCalc({
+          ...calc,
+          number: 0,
+          result: !calc.sign ? 0 : calc.result,
+        });
       } else {
         setCalc({
           ...calc,
-          number: activeNumber,
+          number: Number(activeNumber),
           result: !calc.sign ? 0 : calc.result,
         });
       }
     } else {
       setCalc({
         ...calc,
-        number: calc.number + activeNumber,
+        number: Number(calc.number + activeNumber),
         result: !calc.sign ? 0 : calc.result,
       });
     }
   };
-  console.log(calc);
-
-  // const handleClick = (e) => {
-  //   const activeKey = e.target.innerText;
-  //   const keyType = e.target.dataset.type;
-  //   let number = calc;
-
-  //   if (
-  //     keyType === "number" ||
-  //     (keyType === "operation" && activeKey !== "=")
-  //   ) {
-  //     setCalc(calc + activeKey);
-  //   }
-  //   if (keyType === "operation") {
-  //     if (!calc) {
-  //       return;
-  //     } else {
-  //       switch (activeKey) {
-  //         case "+":
-  //           break;
-  //         case "-":
-  //           break;
-  //         case "x":
-  //           break;
-  //         case "/":
-  //           break;
-  //         default:
-  //           return;
-  //       }
-  //       // if (activeKey === "+") {
-  //       // } else if (activeKey === "-") {
-  //       // } else if (activeKey === "x") {
-  //       // } else if (activeKey === "/") {
-  //       // }
-  //     }
-  //   } else if (keyType === "function") {
-  //   }
-  // };
 
   return (
     <div className="calc">
       <h1 className="title calc__title">calc</h1>
       <ThemeToggle />
-      <ResultPanel calc={calc.result ? calc.result : calc.number} />
+      <ResultPanel calc={calc.number ? calc.number : calc.result} />
       <Keyboard
-        // numbers={numbers}
-        // operations={operations}
         keys={keys}
         handleReset={handleReset}
         handleDelete={handleDelete}

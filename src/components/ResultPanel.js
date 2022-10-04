@@ -1,5 +1,6 @@
 const ResultPanel = (props) => {
-  return <div className="resultPanel calc__resultPanel">{props.calc}</div>;
+  const calc = props.calc.toString().replace(".", ",");
+  return <div className="resultPanel calc__resultPanel">{calc}</div>;
 };
 
 export default ResultPanel;
