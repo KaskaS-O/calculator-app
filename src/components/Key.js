@@ -1,7 +1,7 @@
 const Key = (props) => {
   return (
     <div
-      className="keyboard__key"
+      className="keyboard__key key"
       id={props.id}
       data-type={props.type}
       onClick={

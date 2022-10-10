@@ -1,1 +1,12 @@
+@import "variables";
+@import "normalize";
+@import "Keyboard";
+@import "Key";
+@import "ResultPanel";
 @import "App.scss";
+
+body {
+  background-color: $main-bg-1;
+  color: $white;
+  font-weight: 700;
+}

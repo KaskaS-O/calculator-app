@@ -133,20 +133,29 @@ function App() {
   };
 
   return (
-    <div className="calc">
-      <h1 className="title calc__title">calc</h1>
-      <ThemeToggle />
-      <ResultPanel calc={calc.number ? calc.number : calc.result} />
-      <Keyboard
-        keys={keys}
-        handleReset={handleReset}
-        handleDelete={handleDelete}
-        handleEqual={handleEqual}
-        handleOperation={handleOperation}
-        handleDot={handleDot}
-        handleNumber={handleNumber}
-      />
-    </div>
+    <>
+      <div className="calc">
+        <h1 className="title calc__title">calc</h1>
+        <ThemeToggle />
+        <ResultPanel calc={calc.number ? calc.number : calc.result} />
+        <Keyboard
+          keys={keys}
+          handleReset={handleReset}
+          handleDelete={handleDelete}
+          handleEqual={handleEqual}
+          handleOperation={handleOperation}
+          handleDot={handleDot}
+          handleNumber={handleNumber}
+        />
+      </div>
+      <div className="attribution">
+        Challenge by
+        <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">
+          Frontend Mentor
+        </a>
+        . Coded by <a href="#">CodingDuck</a>.
+      </div>
+    </>
   );
 }
 
