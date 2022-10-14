@@ -2,16 +2,22 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(5, 1fr);
-  gap: $inside-gap;
-  padding: $outside-gap;
-  background-color: $toggle-keypad-bg-1;
+  grid-template-areas:
+    "num7 num8 num9 del"
+    "num4 num5 num6 plus"
+    "num1 num2 num3 minus"
+    "dot num0 slash x"
+    "reset reset equal equal";
+  column-gap: var(--inside-gap);
+  row-gap: calc(var(--inside-gap) + var(--shadow-size));
+  height: var(--keyboard-height);
+  padding: var(--outside-gap);
+  border-radius: var(--border-radius-calc);
+  background-color: var(--toggle-keypad-bg);
 
   &__key {
     justify-self: center;
     width: 100%;
-    height: 60px;
-    border: 1px solid black;
-    text-align: center;
-    line-height: 60px;
+    height: 100%;
   }
 }

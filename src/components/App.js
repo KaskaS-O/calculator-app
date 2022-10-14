@@ -1,9 +1,17 @@
 import { useState } from "react";
+import useLocalStorage from "use-local-storage";
+
 import ThemeToggle from "./ThemeToggle";
 import ResultPanel from "./ResultPanel";
 import Keyboard from "./Keyboard";
 
 function App() {
+  const defaultTheme = window.localStorage.getItem("theme");
+  const [theme, setTheme] = useLocalStorage(
+    "theme",
+    defaultTheme === null ? "1" : defaultTheme
+  );
+
   const [calc, setCalc] = useState({
     sign: "",
     number: 0,
@@ -11,24 +19,24 @@ function App() {
   });
 
   const keys = [
-    { name: "0", id: "0", type: "number" },
-    { name: "1", id: "1", type: "number" },
-    { name: "2", id: "2", type: "number" },
-    { name: "3", id: "3", type: "number" },
-    { name: "4", id: "4", type: "number" },
-    { name: "5", id: "5", type: "number" },
-    { name: "6", id: "6", type: "number" },
-    { name: "7", id: "7", type: "number" },
-    { name: "8", id: "8", type: "number" },
-    { name: "9", id: "9", type: "number" },
-    { name: ".", id: "dot", type: "number" },
-    { name: "+", id: "plus", type: "operation" },
-    { name: "-", id: "minus", type: "operation" },
-    { name: "x", id: "x", type: "operation" },
-    { name: "/", id: "slash", type: "operation" },
-    { name: "=", id: "equal", type: "operation" },
-    { name: "del", id: "del", type: "function" },
-    { name: "reset", id: "reset", type: "function" },
+    { name: "0", id: "num0" },
+    { name: "1", id: "num1" },
+    { name: "2", id: "num2" },
+    { name: "3", id: "num3" },
+    { name: "4", id: "num4" },
+    { name: "5", id: "num5" },
+    { name: "6", id: "num6" },
+    { name: "7", id: "num7" },
+    { name: "8", id: "num8" },
+    { name: "9", id: "num9" },
+    { name: ".", id: "dot" },
+    { name: "+", id: "plus" },
+    { name: "-", id: "minus" },
+    { name: "x", id: "x" },
+    { name: "/", id: "slash" },
+    { name: "=", id: "equal" },
+    { name: "del", id: "del" },
+    { name: "reset", id: "reset" },
   ];
 
   const handleReset = () => {
@@ -96,11 +104,11 @@ function App() {
   };
 
   const handleDot = (e) => {
-    const dot = e.target.innerHTML;
+    const dot = e.target.innerText;
 
-    if (!calc.number) {
+    if (!calc.number && !calc.result) {
       setCalc({ ...calc, number: 0 + dot });
-    } else if (!calc.number.toString().includes(".")) {
+    } else if (calc.number.toString().indexOf(".") === -1 && calc.number) {
       setCalc({ ...calc, number: calc.number + dot });
     } else {
       return;
@@ -132,11 +140,16 @@ function App() {
     }
   };
 
+  const switchTheme = (theme) => {
+    const newTheme = theme === "1" ? "1" : theme === "2" ? "2" : "3";
+    setTheme(newTheme);
+  };
+
   return (
-    <>
+    <main className="wrapper" data-theme={theme}>
       <div className="calc">
         <h1 className="title calc__title">calc</h1>
-        <ThemeToggle />
+        <ThemeToggle switchTheme={switchTheme} />
         <ResultPanel calc={calc.number ? calc.number : calc.result} />
         <Keyboard
           keys={keys}
@@ -155,7 +168,7 @@ function App() {
         </a>
         . Coded by <a href="#">CodingDuck</a>.
       </div>
-    </>
+    </main>
   );
 }
 

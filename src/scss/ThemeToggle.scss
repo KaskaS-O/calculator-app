@@ -1,0 +1,19 @@
+.themeToggle {
+  position: relative;
+  &__title {
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    transform: translateY(-50%);
+    text-transform: uppercase;
+    color: var(--screen-txt);
+    font-size: var(--label-font-size);
+    letter-spacing: 1px;
+  }
+
+  &__txt {
+    display: inline-block;
+    height: 100%;
+    width: var(--toggle-size);
+  }
+}

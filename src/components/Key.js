@@ -21,7 +21,7 @@ const Key = (props) => {
           : props.handleNumber
       }
     >
-      {props.name}
+      <span className="key__name">{props.name}</span>
     </div>
   );
 };

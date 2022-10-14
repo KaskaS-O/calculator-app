@@ -1,5 +1,8 @@
 import { useState } from "react";
 import {
+  Label,
+  LabelContainter,
+  SwitchContainer,
   Switch,
   SwitchLabel,
   SwitchRadio,
@@ -8,6 +11,7 @@ import {
 
 function ToggleSwitch(props) {
   const [selected, setSelected] = useState(props.selected);
+  const switchTheme = props.switchTheme;
 
   const ConcealedRadio = ({ value, selected }) => (
     <SwitchRadio
@@ -23,8 +27,17 @@ function ToggleSwitch(props) {
     </SwitchLabel>
   );
 
+  const OuterLabel = () => {
+    const labels = props.values.map((label) => {
+      return <Label key={label}>{label}</Label>;
+    });
+
+    return <LabelContainter>{labels}</LabelContainter>;
+  };
+
   const handleChange = (val) => {
     setSelected(val);
+    switchTheme(val);
   };
 
   const selectionStyle = () => {
@@ -34,17 +47,23 @@ function ToggleSwitch(props) {
   };
 
   return (
+    // <SwitchContainer>
     <Switch>
+      <OuterLabel />
+
       {props.values.map((val) => {
         return (
-          <span key={val}>
-            <ConcealedRadio value={val} selected={selected} />
-            <ClickableLabel title={val} onChange={handleChange} />
-          </span>
+          <>
+            <span key={val}>
+              <ConcealedRadio value={val} selected={selected} />
+              <ClickableLabel title={val} onChange={handleChange} />
+            </span>
+          </>
         );
       })}
       <SwitchSelection style={selectionStyle()} />
     </Switch>
+    // </SwitchContainer>
   );
 }
 

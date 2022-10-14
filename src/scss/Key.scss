@@ -1,4 +1,88 @@
 .key {
-  background-color: $key-bg-1;
-  color: $dark-txt-1;
+  // height: var(--key-size);
+  position: relative;
+  border-radius: var(--border-radius-key);
+  background-color: var(--key-bg);
+  color: var(--main-txt);
+  font-size: var(--screen-font-size);
+  text-align: center;
+  box-shadow: 0 var(--shadow-size) 0 0 var(--key-shadow);
+
+  &__name {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+#del,
+#reset {
+  background-color: var(--func-key-bg);
+  box-shadow: 0 var(--shadow-size) 0 0 var(--func-key-shadow);
+  color: var(--secondary-txt);
+  text-transform: uppercase;
+  font-size: calc(var(--label-font-size) * 1.5);
+}
+
+#del {
+  grid-area: del;
+}
+
+#reset {
+  grid-area: reset;
+}
+
+#equal {
+  grid-area: equal;
+  background-color: var(--equal-key-bg);
+  box-shadow: 0 var(--shadow-size) 0 0 var(--equal-key-shadow);
+  color: var(--equal-txt);
+}
+#plus {
+  grid-area: plus;
+}
+#minus {
+  grid-area: minus;
+}
+#x {
+  grid-area: x;
+}
+#slash {
+  grid-area: slash;
+}
+#dot {
+  grid-area: dot;
+}
+
+#num0 {
+  grid-area: num0;
+}
+
+#num1 {
+  grid-area: num1;
+}
+#num2 {
+  grid-area: num2;
+}
+#num3 {
+  grid-area: num3;
+}
+#num4 {
+  grid-area: num4;
+}
+#num5 {
+  grid-area: num5;
+}
+#num6 {
+  grid-area: num6;
+}
+#num7 {
+  grid-area: num7;
+}
+#num8 {
+  grid-area: num8;
+}
+#num9 {
+  grid-area: num9;
 }

@@ -1,5 +1,12 @@
+.wrapper {
+  background-color: var(--main-bg);
+  height: 100vh;
+}
+
 .calc {
-  margin: 0 $outside-gap;
+  width: var(--calc-width);
+  margin: 0 auto;
+  padding-top: var(--outside-gap);
   display: grid;
   grid-template-rows: auto auto 1fr;
   grid-template-columns: 1fr 1fr;
@@ -10,7 +17,7 @@
 
   &__title {
     grid-area: title;
-    padding: $outside-gap 0;
+    padding: var(--outside-gap) 0;
   }
 
   &__themeToggle {
@@ -19,12 +26,17 @@
 
   &__resultPanel {
     grid-area: resultPanel;
-    margin-bottom: $outside-gap;
+    margin-bottom: var(--outside-gap);
   }
 
   &__keyboard {
     grid-area: keyboard;
   }
+}
+
+.title {
+  color: var(--screen-txt);
+  font-size: var(--title-font-size);
 }
 
 .attribution {
@@ -37,6 +49,6 @@
   font-weight: 400;
 }
 .attribution a {
-  color: $screen-bg-1;
+  color: var(--screen-txt);
   font-weight: 700;
 }

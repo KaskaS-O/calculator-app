@@ -1,5 +1,8 @@
 .resultPanel {
-  height: 50px;
-  width: 100%;
-  background-color: $screen-bg-1;
+  padding: var(--outside-gap);
+  border-radius: var(--border-radius-calc);
+  background-color: var(--screen-bg);
+  color: var(--screen-txt);
+  font-size: var(--screen-font-size);
+  text-align: right;
 }

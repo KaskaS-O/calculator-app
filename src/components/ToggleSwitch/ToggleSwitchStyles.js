@@ -1,13 +1,35 @@
 import styled from "styled-components";
 
+export const Label = styled.span`
+  display: inline-block;
+  height: var(--toggle-size);
+  width: var(--toggle-size);
+  line-height: var(--toggle-size);
+  font-size: var(--label-font-size);
+  text-align: center;
+  color: var(--secondary-txt);
+`;
+
+export const LabelContainter = styled.div`
+  position: absolute;
+  height: var(--toggle-size);
+  width: calc(var(--toggle-size) * 3);
+  top: calc(-0.9 * var(--toggle-size));
+  left: 50%;
+  transform: translateX(-50%);
+`;
+
 export const Switch = styled.div`
-  font-family: "Lucida Grande", Tahoma, Verdana, sans-serif;
   position: relative;
-  height: 26px;
-  width: 78px;
-  background-color: #e4e4e4;
-  border-radius: 13px;
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
+  top: 50%;
+  left: calc(100% - calc(var(--toggle-size) * 3));
+  transform: translateY(-50%);
+  height: var(--toggle-size);
+  width: calc(var(--toggle-size) * 3);
+  // width: calc(3 * var(--toggle-switcher-size) + (2 * var(--toggle-size) * 0.2));
+  width: var(toggle-size);
+  background-color: var(--toggle-keypad-bg);
+  border-radius: calc(var(--toggle-size) / 2);
 `;
 
 export const SwitchRadio = styled.input`
@@ -18,12 +40,14 @@ export const SwitchSelection = styled.span`
   display: block;
   position: absolute;
   z-index: 1;
-  top: 0px;
-  left: 0px;
-  width: 26px;
-  height: 26px;
-  background: #216ba5;
-  border-radius: 13px;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: var(--toggle-switcher-size);
+  height: var(--toggle-switcher-size);
+  margin: 0 calc(var(--toggle-size) * 0.2);
+  background: var(--equal-key-bg);
+  border-radius: calc(var(--toggle-size) / 2);
   transition: left 0.25s ease-out;
 `;
 
@@ -31,8 +55,8 @@ export const SwitchLabel = styled.label`
   position: relative;
   z-index: 2;
   float: left;
-  width: 26px;
-  line-height: 26px;
+  width: var(--toggle-size);
+  line-height: var(--toggle-size);
   font-size: 0;
   color: transparent;
   text-align: center;
