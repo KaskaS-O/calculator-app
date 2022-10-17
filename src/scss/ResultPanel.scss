@@ -5,4 +5,9 @@
   color: var(--screen-txt);
   font-size: var(--screen-font-size);
   text-align: right;
+
+  @media (min-width: $mobile-lg) and (orientation: landscape) {
+    border-radius: calc(var(--border-radius-calc) * 1.5);
+    font-size: calc(var(--screen-font-size) * 1.6);
+  }
 }

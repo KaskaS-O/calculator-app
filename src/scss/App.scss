@@ -15,6 +15,26 @@
     "resultPanel resultPanel"
     "keyboard keyboard";
 
+  @media (max-width: $mobile-xs) {
+    width: calc(var(--calc-width) * 0.8);
+  }
+
+  @media (max-width: $mobile-md) {
+    width: calc(var(--calc-width) * 1.2);
+  }
+
+  @media (min-width: $mobile-lg) and (orientation: landscape) {
+    width: calc(var(--calc-width) * 1.4);
+  }
+
+  @media (min-width: $desktop-sm) and (orientation: landscape) {
+    padding-top: calc(var(--outside-gap) * 3);
+  }
+
+  @media (min-width: $desktop-lg) and (orientation: landscape) {
+    padding-top: calc(var(--outside-gap) * 4);
+  }
+
   &__title {
     grid-area: title;
     padding: var(--outside-gap) 0;
@@ -47,6 +67,11 @@
   font-size: 11px;
   text-align: center;
   font-weight: 400;
+  color: var(--screen-txt);
+
+  @media (min-width: $mobile-lg) and (orientation: landscape) {
+    bottom: 20px;
+  }
 }
 .attribution a {
   color: var(--screen-txt);

@@ -9,6 +9,14 @@
     color: var(--screen-txt);
     font-size: var(--label-font-size);
     letter-spacing: 1px;
+
+    @media (max-width: $mobile-xs) {
+      left: 5%;
+    }
+
+    @media (min-width: $mobile-lg) and (orientation: landscape) {
+      left: 35%;
+    }
   }
 
   &__txt {

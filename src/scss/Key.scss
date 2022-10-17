@@ -8,6 +8,14 @@
   text-align: center;
   box-shadow: 0 var(--shadow-size) 0 0 var(--key-shadow);
 
+  @media (max-width: $mobile-xs) {
+    font-size: calc(var(--screen-font-size) * 0.8);
+  }
+
+  @media (min-width: $mobile-lg) and (orientation: landscape) {
+    border-radius: calc(var(--border-radius-key) * 1.5);
+  }
+
   &__name {
     position: absolute;
     top: 50%;
@@ -23,6 +31,10 @@
   color: var(--secondary-txt);
   text-transform: uppercase;
   font-size: calc(var(--label-font-size) * 1.5);
+
+  @media (max-width: $mobile-xs) {
+    font-size: calc(var(--label-font-size) * 1.5 * 0.8);
+  }
 }
 
 #del {

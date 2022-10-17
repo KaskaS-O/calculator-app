@@ -2,7 +2,6 @@ import { useState } from "react";
 import {
   Label,
   LabelContainter,
-  SwitchContainer,
   Switch,
   SwitchLabel,
   SwitchRadio,
@@ -47,7 +46,6 @@ function ToggleSwitch(props) {
   };
 
   return (
-    // <SwitchContainer>
     <Switch>
       <OuterLabel />
 
@@ -63,7 +61,6 @@ function ToggleSwitch(props) {
       })}
       <SwitchSelection style={selectionStyle()} />
     </Switch>
-    // </SwitchContainer>
   );
 }
 

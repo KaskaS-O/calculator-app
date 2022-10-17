@@ -8,6 +8,10 @@ export const Label = styled.span`
   font-size: var(--label-font-size);
   text-align: center;
   color: var(--secondary-txt);
+  @media (max-width: 300px) {
+    height: calc(var(--toggle-size) * 0.8);
+    width: calc(var(--toggle-size) * 0.8);
+  }
 `;
 
 export const LabelContainter = styled.div`
@@ -17,6 +21,11 @@ export const LabelContainter = styled.div`
   top: calc(-0.9 * var(--toggle-size));
   left: 50%;
   transform: translateX(-50%);
+
+  @media (max-width: 300px) {
+    height: calc(var(--toggle-size) * 0.8);
+    width: calc(var(--toggle-size) * 3 * 0.8);
+  }
 `;
 
 export const Switch = styled.div`
@@ -26,10 +35,14 @@ export const Switch = styled.div`
   transform: translateY(-50%);
   height: var(--toggle-size);
   width: calc(var(--toggle-size) * 3);
-  // width: calc(3 * var(--toggle-switcher-size) + (2 * var(--toggle-size) * 0.2));
-  width: var(toggle-size);
   background-color: var(--toggle-keypad-bg);
   border-radius: calc(var(--toggle-size) / 2);
+
+  @media (max-width: 300px) {
+    height: calc(var(--toggle-size) * 0.8);
+    width: calc(var(--toggle-size) * 3 * 0.8);
+    left: calc(100% - calc(var(--toggle-size) * 3 * 0.8));
+  }
 `;
 
 export const SwitchRadio = styled.input`
@@ -49,6 +62,11 @@ export const SwitchSelection = styled.span`
   background: var(--equal-key-bg);
   border-radius: calc(var(--toggle-size) / 2);
   transition: left 0.25s ease-out;
+
+  @media (max-width: 300px) {
+    height: calc(var(--toggle-switcher-size) * 0.8);
+    width: calc(var(--toggle-switcher-size) * 0.8);
+  }
 `;
 
 export const SwitchLabel = styled.label`

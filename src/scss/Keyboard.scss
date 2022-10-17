@@ -15,6 +15,21 @@
   border-radius: var(--border-radius-calc);
   background-color: var(--toggle-keypad-bg);
 
+  @media (max-width: $mobile-xs) {
+    height: calc(var(--keyboard-height) * 0.8);
+  }
+
+  @media (min-width: $mobile-md) {
+    column-gap: calc(var(--inside-gap) * 1.5);
+    row-gap: calc((var(--inside-gap) + var(--shadow-size)) * 1.5);
+  }
+
+  @media (min-width: $mobile-lg) and (orientation: landscape) {
+    column-gap: calc(var(--inside-gap) * 2);
+    row-gap: calc((var(--inside-gap) + var(--shadow-size)) * 2);
+    border-radius: calc(var(--border-radius-calc) * 1.5);
+  }
+
   &__key {
     justify-self: center;
     width: 100%;

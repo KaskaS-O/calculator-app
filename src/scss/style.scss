@@ -1,5 +1,5 @@
-@import "variables";
 @import "normalize";
+@import "variables";
 @import "ThemeToggle";
 @import "Keyboard";
 @import "Key";
@@ -10,9 +10,9 @@
   // Layout
   --calc-width: 325px;
   --keyboard-height: 400px;
-  --key-size: 60px;
-  --toggle-size: 24px;
-  --toggle-switcher-size: calc((var(--toggle-size) * 0.6));
+  // --key-size: 60px;
+  --toggle-size: 26px;
+  --toggle-switcher-size: calc(var(--toggle-size) * 0.6);
   --toggle-margin: calc(var(--toggle-size) * 0.2);
   --border-radius-calc: 10px;
   --border-radius-key: 5px;
@@ -98,8 +98,5 @@
 }
 
 body {
-  // background-color: $main-bg-1;
-  // color: $white;
-
   font-weight: 700;
 }
