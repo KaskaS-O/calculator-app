@@ -6,7 +6,7 @@ const ThemeToggle = (props) => {
       <span className="themeToggle__title">Theme</span>
       <ToggleSwitch
         values={["1", "2", "3"]}
-        selected="1"
+        selected={props.selected}
         switchTheme={props.switchTheme}
       />
     </div>

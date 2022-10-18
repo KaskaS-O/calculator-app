@@ -7,9 +7,11 @@ import Keyboard from "./Keyboard";
 
 function App() {
   const defaultTheme = window.localStorage.getItem("theme");
+  const defaultDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+
   const [theme, setTheme] = useLocalStorage(
     "theme",
-    defaultTheme === null ? "1" : defaultTheme
+    defaultDark ? "3" : defaultTheme === null ? "1" : defaultTheme
   );
 
   const [calc, setCalc] = useState({
@@ -149,7 +151,7 @@ function App() {
     <main className="wrapper" data-theme={theme}>
       <div className="calc">
         <h1 className="title calc__title">calc</h1>
-        <ThemeToggle switchTheme={switchTheme} />
+        <ThemeToggle switchTheme={switchTheme} selected={theme} />
         <ResultPanel calc={calc.number ? calc.number : calc.result} />
         <Keyboard
           keys={keys}
