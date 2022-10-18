@@ -1,6 +1,6 @@
 # Frontend Mentor - Calculator app solution
 
-![Design preview for the Calculator app coding challenge](./design/desktop-preview.jpg)
+![Design preview for the Calculator app coding challenge](/home/kaczka/FrontendMentor/calculator-app-main/my-app/src/design/desktop-preview.jpg)
 
 This is a solution to the [Calculator app challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/calculator-app-9lteq5N29). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
